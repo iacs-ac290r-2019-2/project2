@@ -1,0 +1,14 @@
+channels:
+    - defaults
+dependencies:
+    - python=3.7
+    - jupyter
+    - matplotlib
+    - xarray
+    - dask
+    - netcdf4
+    - scipy
+    - pip:
+        - vtki
+        - numba
+        
