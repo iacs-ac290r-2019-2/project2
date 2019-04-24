@@ -1,3 +1,15 @@
+# Ignore murphy input/output files
+*.ios
+*.xys
+*.hdr
+
+*.pvtu
+*.vtu
+
+*.nc
+
+# Standard gitignore
+
 .DS_Store
 
 # Created by https://www.gitignore.io/api/c
