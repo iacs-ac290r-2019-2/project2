@@ -21,4 +21,22 @@ This make the output data 10x smaller (for each time step), and even 50x smaller
 
 ## Data visualization and computation
 
+Quantities to compute & plot
 
+Basic:
+
+- y-z cross-section (x at middle) of blood density, velocity_z, and drug density. Make animation.
+
+- Streamline of (u_z, u_y) at cross-section
+
+- Integral of drug density over the narrow.
+
+- Bolus profile averaged over the cross-section, evolve over time.
+
+Advanced:
+
+- Schlierin vizualization of bloold density
+
+- Lagrangian tracer particles. Use ParaView StreamTracer filter.
+
+- Small whirls around the start of narrowing. Use 3D Paraview or 2D x-y cross-section.
