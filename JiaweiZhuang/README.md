@@ -13,6 +13,11 @@ To read files on Odyssey `/n/scratchlfs/`, definitely run Python/Jupyter on comp
 
 ## Convert Murphy unstructured VTK output to gridded, compressed NetCDF
 
+- Python script: [preprocess_vtk.py](./preprocess_vtk.py)
+
+- Slurm script to run the Python script: [submit_preprocess.sh](./submit_preprocess.sh)
+
+This make the output data 10x smaller (for each time step), and even 50x smaller with 5x downsamping (the `thin` parameter in script). The NetCDF data are gridded, structured 3D arrays, so are much easier to analyze. Data on undefined mesh points are set as `nan`.
 
 ## Data visualization and computation
 
