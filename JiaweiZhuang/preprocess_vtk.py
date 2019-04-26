@@ -183,7 +183,7 @@ if __name__ == '__main__':
     parser.add_argument("--thin", type=int, default=40,
                         help="downsample rate")
     parser.add_argument("--case", type=str, default=None,
-                        help="choose from 're5pe1', 're5pe10', 're10pe1', 're10pe10'")
+                        help="choose from 're5pe1', 're5pe3', 're10pe1', 're10pe3'")
     args = parser.parse_args()
 
     print("Arguments:", args)
@@ -193,15 +193,15 @@ if __name__ == '__main__':
     # Input files
     filelists_bld = {}
     filelists_bld['re5pe1'] = sglob('/n/scratchlfs/ac290r/p2_re5_pe1/DIRDATA_Blood/VTK/*.pvtu')
-    filelists_bld['re5pe10'] = sglob('/n/scratchlfs/ac290r/p2_re5_pe10/DIRDATA_Blood/VTK/*.pvtu')
+    filelists_bld['re5pe3'] = sglob('/n/scratchlfs/ac290r/p2_re5_pe3/DIRDATA_Blood/VTK/*.pvtu')
     filelists_bld['re10pe1'] = sglob('/n/scratchlfs/ac290r/p2_re10_pe1/DIRDATA_Blood/VTK/*.pvtu')
-    filelists_bld['re10pe10'] = sglob('/n/scratchlfs/ac290r/p2_re10_pe10/DIRDATA_Blood/VTK/*.pvtu')
+    filelists_bld['re10pe3'] = sglob('/n/scratchlfs/ac290r/p2_re10_pe3/DIRDATA_Blood/VTK/*.pvtu')
     
     filelists_drug = {}
     filelists_drug['re5pe1'] = sglob('/n/scratchlfs/ac290r/p2_re5_pe1/DIRDATA_Drug/VTK/*.pvtu')
-    filelists_drug['re5pe10'] = sglob('/n/scratchlfs/ac290r/p2_re5_pe10/DIRDATA_Drug/VTK/*.pvtu')
+    filelists_drug['re5pe3'] = sglob('/n/scratchlfs/ac290r/p2_re5_pe3/DIRDATA_Drug/VTK/*.pvtu')
     filelists_drug['re10pe1'] = sglob('/n/scratchlfs/ac290r/p2_re10_pe1/DIRDATA_Drug/VTK/*.pvtu')
-    filelists_drug['re10pe10'] = sglob('/n/scratchlfs/ac290r/p2_re10_pe10/DIRDATA_Drug/VTK/*.pvtu')
+    filelists_drug['re10pe3'] = sglob('/n/scratchlfs/ac290r/p2_re10_pe3/DIRDATA_Drug/VTK/*.pvtu')
     
     # Equivalent:
     # for case in ['re5pe1', 're5pe10', 're10pe1', 're10pe10']:
@@ -212,16 +212,15 @@ if __name__ == '__main__':
     print('number of raw files:')
     print([len(filelist) for filelist in filelists_bld.values()])
     print([len(filelist) for filelist in filelists_drug.values()])
-    # print(len(filelists_drug['re5pe1']), len(filelists_drug['re5pe10']))
     
     # Output files
     TOPDIR = '/n/scratchlfs/ac290r/p2_data_postprocess/'
     dest_dir = {}
     
     dest_dir['re5pe1'] = (TOPDIR+'re5_pe1/blood/', TOPDIR+'re5_pe1/drug/')
-    dest_dir['re5pe10'] = (TOPDIR+'re5_pe10/blood/', TOPDIR+'re5_pe10/drug/')
+    dest_dir['re5pe3'] = (TOPDIR+'re5_pe3/blood/', TOPDIR+'re5_pe3/drug/')
     dest_dir['re10pe1'] = (TOPDIR+'re10_pe1/blood/', TOPDIR+'re10_pe1/drug/')
-    dest_dir['re10pe10'] = (TOPDIR+'re10_pe10/blood/', TOPDIR+'re10_pe10/drug/')
+    dest_dir['re10pe3'] = (TOPDIR+'re10_pe3/blood/', TOPDIR+'re10_pe3/drug/')
     
     # Equivalent:
     # for case in ['re5pe1', 're5pe10', 're10pe1', 're10pe10']:
@@ -235,7 +234,7 @@ if __name__ == '__main__':
     if case is None:  # dry run
         pass
     
-    elif case in ['re5pe1', 're5pe10', 're10pe1', 're10pe10']:
+    elif case in ['re5pe1', 're5pe3', 're10pe1', 're10pe3']:
         multistep_vtk_to_netcdf(filelists_bld[case][::thin], filelists_drug[case][::thin], dest_dir[case][0], dest_dir[case][1])
         
     else:
