@@ -23,7 +23,7 @@ ffmpeg -framerate 24 -pattern_type glob -i './img/yz_cross/re10pe1/uz/uz_*.png' 
 fi
 
 
-if true; then
+if false; then
 
     echo 'making movie for blood field'
     sleep 1
@@ -38,5 +38,19 @@ ffmpeg -framerate 24 -pattern_type glob -i './img/yz_cross/re5pe3/drug/small_vra
 
 # Re=10 Pe=1 case
 ffmpeg -framerate 24 -pattern_type glob -i './img/yz_cross/re10pe1/drug/large_vrange/drug_*.png' -pix_fmt yuv420p ./movie/drug_yzcross_largev_re10pe1.mp4
+
+fi
+
+
+if true; then
+
+    echo 'making movie for streamlines'
+    sleep 1
+
+# Re=5 case
+ffmpeg -framerate 12 -pattern_type glob -i './img/yz_cross/re5pe1/streamline/streamline_*.png' -pix_fmt yuv420p ./movie/streamline_yzcross_re5pe1.mp4
+
+# Re=10 case
+ffmpeg -framerate 12 -pattern_type glob -i './img/yz_cross/re10pe1/streamline/streamline_*.png' -pix_fmt yuv420p ./movie/streamline_yzcross_re10pe1.mp4
 
 fi
