@@ -56,7 +56,7 @@ ffmpeg -framerate 12 -pattern_type glob -i './img/yz_cross/re10pe1/streamline/st
 fi
 
 
-if true; then
+if false; then
 
     echo 'making movie for drug profile'
     sleep 1
@@ -67,4 +67,11 @@ ffmpeg -framerate 24 -pattern_type glob -i './img/drug_profile/smallv/drug_profi
 fi
 
 
+if true; then
 
+    echo 'making movie for schlieren profile'
+    sleep 1
+
+ffmpeg -framerate 24 -pattern_type glob -i './img/schlieren/schlieren_*.png' -pix_fmt yuv420p ./movie/schlieren.mp4
+
+fi
