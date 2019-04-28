@@ -42,7 +42,7 @@ ffmpeg -framerate 24 -pattern_type glob -i './img/yz_cross/re10pe1/drug/large_vr
 fi
 
 
-if true; then
+if false; then
 
     echo 'making movie for streamlines'
     sleep 1
@@ -54,3 +54,17 @@ ffmpeg -framerate 12 -pattern_type glob -i './img/yz_cross/re5pe1/streamline/str
 ffmpeg -framerate 12 -pattern_type glob -i './img/yz_cross/re10pe1/streamline/streamline_*.png' -pix_fmt yuv420p ./movie/streamline_yzcross_re10pe1.mp4
 
 fi
+
+
+if true; then
+
+    echo 'making movie for drug profile'
+    sleep 1
+
+ffmpeg -framerate 12 -pattern_type glob -i './img/drug_profile/largev/drug_profile_*.png' -pix_fmt yuv420p ./movie/drug_profile_largev.mp4
+ffmpeg -framerate 24 -pattern_type glob -i './img/drug_profile/smallv/drug_profile_*.png' -pix_fmt yuv420p ./movie/drug_profile_smallv.mp4
+
+fi
+
+
+
