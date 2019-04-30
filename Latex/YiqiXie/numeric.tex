@@ -1,0 +1,28 @@
+The central idea of LBM is to discretize the distribution function $f(\mathbf{x},\mathbf{\xi}, t)$ in the Boltzmann equation. The discretization of the real space naturally gives rise to a squared lattice. The velocity distribution under equilibrium is centered, thus the corresponding discretization can be done by sampling the velocities around that center. In specific, it samples the velocities connecting neighboring sites in the lattice. The discretized  distribution function, also known as the population, becomes $f_i(\mathbf{x}, t)$, with $i$ running over all sampled velocities (denoted as $\mathbf{c}_i$), and $\mathbf{x}$ and $t$ taking over a discrete mesh of spacetime. The macroscopic fields such as the density field and the velocity field are represented by
+\begin{align}
+    \rho=\sum_if_i(\mathbf{x},t),\quad
+    \rho\mathbf{u}=\sum_i\mathbf{c}_if_i(\mathbf{x},t).
+\end{align}
+
+The lattice Boltzmann equation with BGK collision operator (LBGK), is
+\begin{align}
+    f_i(\mathbf{x}+\mathbf{c}_i\Delta t, t+\Delta t)
+        =f_i(\mathbf{x}, t)-\frac{\Delta t}{\tau}
+         \left(f_i(\mathbf{x}, t) - f_i^\mathrm{eq}(\mathbf{x}, t)\right),
+    \label{eqn:lbe}
+\end{align}
+where the equilibrium population is expanded to the second order
+\begin{align}
+    f_i^\mathrm{eq}(\mathbf{x}, t)=w_i\rho\left(
+        1+\frac{\mathbf{u}\cdot\mathbf{c}_s}{c_s^2}
+        +\frac{(\mathbf{u}\cdot\mathbf{c}_s)^2}{2c_s^4}
+        -\frac{\mathbf{u}\cdot\mathbf{u}}{2c_s^2}
+        \right), 
+\end{align}
+and viscosity is involved as
+\begin{align}
+    \nu=c_s^2(\tau-\frac{\Delta t}{2}).
+\end{align}
+The problem is solved by directly updating the population through Eq. (\ref{eqn:lbe}). 
+
+In our problem, the blood and the drug are treated as two  fluids, each follows a set of LBGK. The blood dynamics is independent, and the drug takes the blood velocity as imposed.

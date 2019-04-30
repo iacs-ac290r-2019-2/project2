@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\usepackage{float} % for formatting figures
+\usepackage{graphicx} % for figures
+\usepackage{amsmath}  % for equations
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\title{Drug Dispersion Simulation in a Stenotic Artery}
+
+\author{
+   Jiawei Zhuang \\
+   Harvard University\\
+   \textit{jiaweizhuang@g.harvard.edu}\\
+   \And
+   Yiqi Xie \\
+   Harvard University \\
+   \textit{yiqi\_xie@g.harvard.edu}\\
+   \And
+   David Pineiro \\
+   Harvard University \\
+   \textit{davidpineiro@g.harvard.edu}\\
+}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+\input{DavidPineiro/Intro_DPineiro.tex}
+
+\section{Description of Code}
+\input{DavidPineiro/codeDescrip_DPineiro.tex}
+
+\section{Numerical Methods Utilized}
+\input{YiqiXie/numeric.tex}
+
+\section{Simulation Parameters}
+\input{YiqiXie/parameters.tex}
+
+% \pagebreak  % put a pagebreak to ensure the correct formatting of the result section.
+\clearpage
+\section{Results}
+\input{JiaweiZhuang/results_Jiawei}
+
+
+\section{Conclusion and Future Work}
+In this work we have studied drug dispersion in a stenotic artery through LBM simulations running on an HPC platform. The physical system is tested with different $Re$ and $Pe$. The result shows that the drug efficacy is higher with both high $Re$ and high $Pe$, which provides important clues for the design of drug releasement in the treatment of the stenosis. Although the $Re=10$ case only run to about 30\% of total simulation and crashed, the drug had already diffused far enough in such a short time, so we can still compute the drug efficacy. Our analysis has also found some interesting fluid behavior in and around the stenotic area. For instance, that area has the highest density gradient and velocity; many small whirls are generated when the blood hit the wall around the narrow. For other areas, the flow is highly laminar, as the Reynolds number is very small compared to that of turbulent flows ($Re>1000$)
+
+Our current simulation geometry applied rectangular stenosis to the artery, which is a rough approximation to the real condition. For future work, one may investigate into the shape effect of the stenosis. In addition, transferring the simulations to distributed GPU architecture may further improve computational performance and help to run more tests within a reasonable period of time. 
+
+
+\bibliographystyle{unsrt}  
+%\bibliography{references}  %%% Remove comment to use the external .bib file (using bibtex).
+%%% and comment out the ``thebibliography'' section.
+
+
+\begin{thebibliography}{1}
+
+% Example:
+% \bibitem{kour2014real}
+% George Kour and Raid Saabne.
+% \newblock Real-time segmentation of on-line handwritten arabic script.
+% \newblock In {\em Frontiers in Handwriting Recognition (ICFHR), 2014 14th
+%   International Conference on}, pages 417--422. IEEE, 2014.
+
+\bibitem{}
+Bernaschi, M., Melchionna, S., Succi, S., Fyta, M., Kaxiras, E., \& Sircar, J. K. (2009). MUPHY: A parallel MUlti PHYsics/scale code for high performance bio-fluidic simulations. Computer Physics Communications, 180(9), 1495-1502.
+
+\end{thebibliography}
+
+
+\end{document}

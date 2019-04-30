@@ -1,0 +1,6 @@
+We used various methods in order to simulate the drug being dissipated through the artery stenosis. 
+
+We first created the shape of the artery using a Python package contained in the file ShapePainter.py which allows us to specify the shape of the vein. This file creates a skeletal mapping of the lattice which is later interpreted by MUPHY another package performing the simulation. ShapePainter.py a .hdr file, which contains the mesh header, a .dat file which details information regarding the mesh nodes, and a .ios file which corresponds to the inlet and outlet boundary conditions which are specified in this file. 
+
+These output files are then interpreted by another package called MUPHY. This package works well for complex and deformed physiological geometries such as veins and arteries, and can cover various
+space/time scales with multi-resolution, often useful for physical systems with various scopes. MUPHY is used via MagicUniverse which instantiates a MagicBegins() object that creates an environment for where the LBM computation will take place. There, various fluid objects can be created with specific properties regarding their viscosity among others. 
